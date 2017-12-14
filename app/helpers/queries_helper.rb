@@ -210,7 +210,7 @@ module QueriesHelper
     when :id
       link_to value, issue_path(item)
     when :subject
-      link_to value, issue_path(item)
+      link_to "[#{item.category.name}] #{value}", issue_path(item)
     when :parent
       value ? (value.visible? ? link_to_issue(value, :subject => false) : "##{value.id}") : ''
     when :description
@@ -367,7 +367,7 @@ module QueriesHelper
 
     tags
   end
- 
+
   def query_hidden_sort_tag(query)
     hidden_field_tag("sort", query.sort_criteria.to_param, :id => nil)
   end
