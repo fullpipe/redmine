@@ -78,7 +78,7 @@ module ApplicationHelper
     if options[:subject] == false
       title = issue.subject.truncate(60)
     else
-      subject = issue.subject
+      subject = issue.category ? "[#{issue.category.name}] #{issue.subject}" : issue.subject
       if truncate_length = options[:truncate]
         subject = subject.truncate(truncate_length)
       end
